@@ -1,45 +1,48 @@
-// Crie um objeto com os seus dados pessoais
-// Deve possui pelo menos duas propriedades nome e sobrenome
+// Transforme o objeto abaixo em uma Constructor Function
+// const pessoa = {
+//   nome: "Nome pessoa",
+//   idade: 0,
+//   andar() {
+//     console.log(this.nome + " andou");
+//   },
+// };
 
-let dadosPessoais = {
-  nome: "Felipe",
-  sobrenome: "Kucharski de Barbosa",
-  idade: 22,
-  cidade: "Rio Grande",
-  nomeCompleto() {
-    console.log(`${this.nome} ${this.sobrenome}`);
-  },
-};
+function Pessoa(nome, idade) {
+  this.nome = nome;
+  this.idade = idade;
+  this.andar = function () {
+    console.log(this.nome + " andou");
+  };
+}
 
-// Crie um método no objeto anterior, que mostre o seu nome completo
+// Crie 3 pessoas, João - 20 anos,
+// Maria - 25 anos, Bruno - 15 anos
 
-dadosPessoais.nomeCompleto();
+const joao = new Pessoa("João", 20);
+const maria = new Pessoa("Maria", 25);
+const bruno = new Pessoa("Bruno", 15);
 
-// Modifique o valor da propriedade preco para 3000
+// Crie uma Constructor Function (Dom) para manipulação
+// de listas de elementos do dom. Deve conter as seguintes
+// propriedades e métodos:
+//
+// elements, retorna NodeList com os elementos selecionados
+// addClass(classe), adiciona a classe a todos os elementos
+// removeClass(classe), remove a classe a todos os elementos
 
-var carro = {
-  preco: 1000,
-  portas: 4,
-  marca: "Audi",
-};
+function Dom(seletor) {
+  const todosElemntos = document.body.querySelectorAll(seletor);
+  this.elements = todosElemntos;
+  this.addClass = function (classe) {
+    this.elements.forEach((item) => {
+      item.classList.add(classe);
+    });
+  };
+  this.removeClass = function (classe) {
+    this.elements.forEach((item) => {
+      item.classList.remove(classe);
+    });
+  };
+}
 
-carro.preco = 3000;
-
-// Crie um objeto de um cachorro que represente um labrador,
-// preto com 10 anos, que late ao ver um homem
-
-let cachorro = {
-  raca: "labrador",
-  cor: "preto",
-  idade: 10,
-  latir(pessoa) {
-    if (pessoa === "homem") {
-      console.log("Latir");
-    } else {
-      console.log("Cachorro calmo");
-    }
-  },
-};
-
-cachorro.latir("homem");
-cachorro.latir("mulher");
+const listaItens = new Dom("li");
