@@ -24,24 +24,34 @@ const transacoes = [
   },
 ];
 
-let soma = 0;
+let valorTaxa = 0;
+let valorRecebimento = 0;
+
 transacoes.forEach((item) => {
-  let valores = item.valor;
-  valores = valores.split("R$ ")[1];
-  valores = +valores;
+  if (item.descricao.startsWith("Taxa")) {
+    let valores = item.valor;
+    valores = valores.split("R$ ")[1];
+    valores = +valores;
 
-  soma += valores;
+    valorTaxa += valores;
+  } else {
+    let valores = item.valor;
+    valores = valores.split("R$ ")[1];
+    valores = +valores;
 
-  // console.log(valores);
-  // console.log(soma);
+    valorRecebimento += valores;
+  }
 });
+
+console.log(valorTaxa);
+console.log(valorRecebimento);
 
 // Retorne uma array com a lista abaixo
 let transportes = "Carro;Avião;Trem;Ônibus;Bicicleta";
 
 transportes = transportes.split(";");
 
-// console.log(transportes);
+console.log(transportes);
 
 // Substitua todos os span's por a's
 let html = `<ul>
@@ -51,14 +61,14 @@ let html = `<ul>
               </ul>`;
 
 htmlArr = html.split("span");
-console.log(htmlArr);
 htmlNew = htmlArr.join("a");
 console.log(htmlNew);
 
 // Retorne o último caracter da frase
 const frase = "Melhor do ano!";
 
-console.log(frase[frase.length - 1]);
+// console.log(frase[frase.length - 1]);
+console.log(frase.slice(-1));
 
 // Retorne o total de taxas
 
@@ -70,4 +80,14 @@ transacoes1 = [
   "TARIFA especial",
 ];
 
-console.log();
+let taxasTotal = 0;
+transacoes1.forEach((item) => {
+  let formatandoStr = item.trim().toLowerCase();
+  // console.log(formatandoStr);
+
+  if (formatandoStr.startsWith("taxa")) {
+    taxasTotal++;
+  }
+});
+
+console.log(taxasTotal);
