@@ -2,15 +2,49 @@
 // com objetos contendo o título, descricao,
 // aulas e horas de cada curso
 
+const cursos = Array.from(document.querySelectorAll(".curso"));
+
+const objCurso = cursos.map((curso) => {
+  const titulo = curso.querySelector("h1").innerText;
+  const descricao = curso.querySelector("p").innerText;
+  const aulas = curso.querySelector(".aulas").innerText;
+  const horas = curso.querySelector(".horas").innerText;
+  return {
+    titulo,
+    descricao,
+    aulas,
+    horas,
+  };
+});
+
+console.log(objCurso);
+
 // Retorne uma lista com os
 // números maiores que 100
+
 const numeros = [3, 44, 333, 23, 122, 322, 33];
+
+const maiores = numeros.filter((valor) => {
+  return valor > 100;
+});
+
+console.log(maiores);
 
 // Verifique se Baixo faz parte
 // da lista de instrumentos e retorne true
+
 const instrumentos = ["Guitarra", "Baixo", "Bateria", "Teclado"];
 
+const possuiBaixo = instrumentos.some((valor) => {
+  return valor == "Baixo";
+});
+
+console.log(possuiBaixo);
+
+// console.log(instrumentos.includes("Baixo"));
+
 // Retorne o valor total das compras
+
 const compras = [
   {
     item: "Banana",
@@ -33,3 +67,11 @@ const compras = [
     preco: "R$ 10,60",
   },
 ];
+
+const comprasValor = compras.reduce((acumulador, item) => {
+  const valorLimpo = +item.preco.replace("R$ ", "").replace(",", ".");
+  acumulador += valorLimpo;
+  return acumulador;
+}, 0);
+
+console.log(comprasValor);
