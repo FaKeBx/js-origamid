@@ -223,11 +223,11 @@ body {
   }
 }
 
-.js .js-descricao section {
+.js [data-tab="descricao"] section {
   display: none;
 }
 
-.js .js-descricao section.ativo {
+.js [data-tab="descricao"] section.ativo {
   display: block;
   animation: show 0.5s forwards;
 }
@@ -243,21 +243,21 @@ body {
   }
 }
 
-.js-accordion dt::after {
+[data-lista="accordion"] dt::after {
   content: "▼";
   margin-left: 10px;
 }
 
-.js-accordion dt.ativo::after {
+[data-lista="accordion"] dt.ativo::after {
   content: "▲";
   margin-left: 10px;
 }
 
-.js .js-accordion dd {
+.js [data-lista="accordion"] dd {
   display: none;
 }
 
-.js .js-accordion dd.ativo {
+.js [data-lista="accordion"] dd.ativo {
   display: block;
   animation: slideDown 0.5s forwards;
 }
@@ -273,13 +273,43 @@ body {
   }
 }
 
-.js .js-scroll {
+.js [data-scroll="scroll"] {
   opacity: 0;
   transform: translate3d(-30px, 0, 0);
   transition: 0.3s;
 }
 
-.js .js-scroll.ativo {
+.js [data-scroll="scroll"].ativo {
   opacity: 1;
   transform: translate3d(0, 0, 0);
+}
+
+.js [data-tab="descricao"] section.ativo.show-rigth {
+  animation: show-rigth 0.5s forwards;
+}
+
+@keyframes show-rigth {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js [data-tab="descricao"] section.ativo.show-down {
+  animation: show-down 0.5s forwards;
+}
+
+@keyframes show-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
