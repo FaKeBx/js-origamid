@@ -5,7 +5,7 @@ export default function initAnimaScroll() {
     function animaScroll() {
       sections.forEach((item) => {
         const sectionTop =
-          item.getBoundingClientRect().top - window.innerHeight * 0.6;
+          item.getBoundingClientRect().top - window.innerHeight * 0.7;
         if (sectionTop < 0) {
           item.classList.add("ativo");
         } else {
