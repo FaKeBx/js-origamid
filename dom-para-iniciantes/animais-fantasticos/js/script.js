@@ -12,3 +12,6 @@ initAccordion();
 
 import initModal from "./modules/modal.js";
 initModal();
+
+import initTooltip from "./modules/tooltip.js";
+initTooltip();

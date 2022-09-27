@@ -3,18 +3,20 @@ export default function initModal() {
   const botaoFechar = document.querySelector('[data-modal="fechar"]');
   const login = document.querySelector('[data-modal="abrir" ]');
 
-  login.addEventListener("click", (e) => {
-    e.preventDefault();
-    modal.classList.add("ativo");
-  });
+  if (modal && botaoFechar && login) {
+    login.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.classList.add("ativo");
+    });
 
-  botaoFechar.addEventListener("click", () => {
-    modal.classList.remove("ativo");
-  });
-
-  modal.addEventListener("click", (e) => {
-    if (e.target == modal) {
+    botaoFechar.addEventListener("click", () => {
       modal.classList.remove("ativo");
-    }
-  });
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target == modal) {
+        modal.classList.remove("ativo");
+      }
+    });
+  }
 }
