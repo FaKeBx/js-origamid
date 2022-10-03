@@ -8,8 +8,31 @@ export default function initTooltip() {
 
   function onMouseOver(e) {
     const tooltipBox = criarTooltip(this);
-    console.log(tooltipBox);
+    tooltipBox.style.top = e.pageY + "px";
+    tooltipBox.style.left = e.pageX + "px";
+
+    onMouseMove.tooltipBox = tooltipBox;
+    this.addEventListener("mousemove", onMouseMove);
+
+    onMouseLeave.tooltipBox = tooltipBox;
+    onMouseLeave.element = this;
+    this.addEventListener("mouseleave", onMouseLeave);
   }
+
+  const onMouseLeave = {
+    handleEvent() {
+      this.tooltipBox.remove();
+      this.element.removeEventListener("mouseleave", onMouseLeave);
+      this.element.removeEventListener("mousemove", onMouseMove);
+    },
+  };
+
+  const onMouseMove = {
+    handleEvent(e) {
+      this.tooltipBox.style.top = e.pageY + 20 + "px";
+      this.tooltipBox.style.left = e.pageX + 20 + "px";
+    },
+  };
 
   function criarTooltip(element) {
     const tooltipBox = document.createElement("div");
