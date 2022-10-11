@@ -8,7 +8,7 @@ export default function initAnimaScroll() {
           item.getBoundingClientRect().top - window.innerHeight * 0.7;
         if (sectionTop < 0) {
           item.classList.add("ativo");
-        } else {
+        } else if (item.classList.contains("ativo")) {
           item.classList.remove("ativo");
         }
       });
