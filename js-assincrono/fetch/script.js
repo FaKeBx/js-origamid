@@ -66,6 +66,55 @@ enviar.addEventListener("click", envio);
 // retorne no DOM o valor de compra da bitcoin and reais.
 // atualize este valor a cada 30s
 
+// setInterval(() => {
+//   const bitcoin = fetch("https://blockchain.info/ticker");
+
+//   bitcoin
+//     .then((r) => {
+//       return r.json();
+//     })
+//     .then((coin) => {
+//       const infoBitcoin = document.querySelector(".info-bitcoin");
+//       infoBitcoin.innerText = coin.BRL.buy;
+//     });
+// }, 30000);
+
+function attBitcoin() {
+  const bitcoin = fetch("https://blockchain.info/ticker");
+
+  bitcoin
+    .then((r) => {
+      return r.json();
+    })
+    .then((coin) => {
+      const infoBitcoin = document.querySelector(".info-bitcoin");
+      infoBitcoin.innerText = `valor do bitcoin: ${coin.BRL.buy}`;
+    });
+}
+
+attBitcoin();
+
+setInterval(attBitcoin, 30000);
+
 // Utilizando a API https://api.chucknorris.io/jokes/random
 // retorne uma piada randomica do chucknorris, toda vez que
 // clicar em próxima
+
+const btn = document.querySelector(".change-joke");
+
+function changeJoke() {
+  const chuckNorris = fetch("https://api.chucknorris.io/jokes/random");
+
+  chuckNorris
+    .then((r) => {
+      return r.json();
+    })
+    .then((joke) => {
+      const infoJoke = document.querySelector(".info-joke");
+      infoJoke.innerText = joke.value;
+    });
+}
+
+changeJoke();
+
+btn.addEventListener("click", changeJoke);
